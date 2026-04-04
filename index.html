@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumar Autos Limited | Reliable • Trusted • Verified</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E31E24; /* Matching the Red in your logo */
+            --bg-dark: #0a0a0a;
+            --text-light: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --accent-gray: #333;
+            --gold: #D4AF37;
+        }
+
+        /* Reset & Base */
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg-dark); color: var(--text-light); margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        /* Navigation */
+        header { 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(0,0,0,0.98); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-gray); 
+        }
+        
+        .logo-container img {
+            height: 70px; /* Adjusted to keep your logo prominent but clean */
+            width: auto;
+            display: block;
+        }
+
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--primary-red); }
+
+        /* Hero Section */
+        .hero { 
+            height: 65vh; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070') center/cover; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 10px; color: #fff; }
+        .hero p { color: var(--gold); font-weight: bold; letter-spacing: 3px; font-size: 1rem; text-transform: uppercase; }
+
+        /* General UI */
+        section { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 50px; font-family: 'Montserrat', sans-serif; font-size: 2rem; border-bottom: 3px solid var(--primary-red); display: inline-block; padding-bottom: 10px; }
+        
+        .cta-btn { 
+            background: var(--primary-red); 
+            color: white; 
+            padding: 14px 35px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            transition: 0.3s; 
+            border: none; 
+            cursor: pointer; 
+            text-transform: uppercase;
+        }
+        .cta-btn:hover { background: #fff; color: #000; transform: translateY(-3px); }
+
+        /* Inventory Grid */
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .car-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; position: relative; transition: 0.3s; }
+        .car-card:hover { border-color: var(--primary-red); transform: translateY(-5px); }
+        .car-img { width: 100%; height: 230px; object-fit: cover; background: #222; }
+        .sold-badge { position: absolute; top: 15px; left: 15px; background: #ff4444; color: white; padding: 6px 15px; font-weight: bold; border-radius: 5px; font-size: 0.8rem; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        .car-info { padding: 25px; }
+        .car-info h3 { margin: 0 0 10px 0; font-family: 'Montserrat'; }
+        .car-price { color: var(--gold); font-weight: bold; margin: 15px 0; font-size: 1.2rem; }
+
+        /* Preorder Form */
+        .preorder-section { background: #111; border-top: 1px solid var(--accent-gray); }
+        .preorder-container { max-width: 850px; margin: 0 auto; background: var(--card-bg); padding: 50px; border-radius: 20px; border: 1px solid #333; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 20px; }
+        .form-group label { margin-bottom: 8px; font-size: 0.8rem; color: var(--gold); font-weight: bold; text-transform: uppercase; }
+        .form-group input, .form-group select, .form-group textarea { 
+            background: #222; border: 1px solid #444; padding: 15px; color: white; border-radius: 8px; outline: none; font-family: inherit;
+        }
+        .form-group input:focus { border-color: var(--primary-red); }
+        .full-width { grid-column: span 2; }
+
+        /* Contact Details */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 20px; }
+        .contact-box { background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid #222; }
+        .contact-box h3 { color: var(--primary-red); font-family: 'Montserrat'; margin-bottom: 20px; }
+        .contact-link { color: #ccc; text-decoration: none; display: block; margin-bottom: 15px; font-size: 1.1rem; transition: 0.2s; }
+        .contact-link:hover { color: var(--gold); }
+
+        /* Floating Chat Widget */
+        #chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 1000; }
+        #chat-button { width: 60px; height: 60px; background: var(--primary-red); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.4); font-size: 1.6rem; }
+        #chat-box { width: 340px; height: 480px; background: white; color: black; position: absolute; bottom: 80px; right: 0; display: none; flex-direction: column; border-radius: 15px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        .chat-header { background: #000; color: white; padding: 18px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        #chat-messages { flex: 1; padding: 20px; overflow-y: auto; background: #f9f9f9; font-size: 0.9rem; line-height: 1.4; }
+        .chat-input { display: flex; border-top: 1px solid #eee; padding: 10px; background: #fff; }
+        .chat-input input { flex: 1; border: 1px solid #ddd; padding: 12px; outline: none; border-radius: 5px; }
+        .chat-input button { background: var(--primary-red); color: white; border: none; padding: 0 20px; cursor: pointer; font-weight: bold; margin-left: 8px; border-radius: 5px; }
+
+        footer { text-align: center; padding: 50px; color: #666; font-size: 0.8rem; border-top: 1px solid #222; letter-spacing: 1px; }
+
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="lumar.jpeg" alt="Lumar Autos Limited Logo">
+    </div>
+    <nav>
+        <a href="#inventory">Cars</a>
+        <a href="#preorder">Preorder</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>YOUR DREAM CAR, OUR PRIORITY</h1>
+    <p>Reliable • Trusted • Verified</p>
+    <div style="margin-top: 30px;">
+        <a href="#inventory" class="cta-btn">View Inventory</a>
+    </div>
+</section>
+
+<section id="inventory">
+    <center><h2 class="section-title">Current Inventory</h2></center>
+    <div class="car-grid">
+        
+        <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Red Lexus NX">
+            <div class="car-info">
+                <h3>Lexus NX 200t</h3>
+                <p>Direct Tokunbo | Ultra Clean | Clean Papers</p>
+                <p class="car-price">Price: Negotiable</p>
+                <button onclick="openChat('I am interested in the Red Lexus NX 200t. Is it still available?')" class="cta-btn" style="width:100%;">NEGOTIATE DEAL</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="sold-badge">SOLD</div>
+            <img src="https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=800" class="car-img" style="filter: grayscale(90%);">
+            <div class="car-info">
+                <h3>Toyota Avalon</h3>
+                <p>Delivered to a happy client in Ibadan.</p>
+                <p class="car-price" style="color: #555;">SOLD</p>
+                <button disabled class="cta-btn" style="width:100%; background: #222; cursor: not-allowed;">OUT OF STOCK</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Lexus RX 350">
+            <div class="car-info">
+                <h3>Lexus RX 350</h3>
+                <p>2022 Model | Full Option | Direct Tokunbo</p>
+                <p class="car-price">Price: Negotiable</p>
+                <button onclick="openChat('Hi Lumar Autos, I want to discuss the Lexus RX 350.')" class="cta-btn" style="width:100%;">NEGOTIATE DEAL</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="preorder-section" id="preorder">
+    <center><h2 class="section-title">Preorder Service</h2></center>
+    <div class="preorder-container">
+        <p style="text-align: center; color: #999; margin-bottom: 40px;">Tell us your specific car requirements and budget. We source the best Direct Tokunbo vehicles with guaranteed clean papers.</p>
+        <form id="preorderForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number (WhatsApp preferred)</label>
+                    <input type="tel" placeholder="+234..." required>
+                </div>
+                <div class="form-group">
+                    <label>Car Model</label>
+                    <input type="text" placeholder="e.g. 2020 Toyota Camry" required>
+                </div>
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <input type="text" placeholder="e.g. 15M - 20M Naira">
+                </div>
+                <div class="form-group full-width">
+                    <label>Additional Features</label>
+                    <textarea rows="4" placeholder="Mention color, trim, or specific features you need..."></textarea>
+                </div>
+            </div>
+            <center><button type="button" onclick="submitPreorder()" class="cta-btn">Submit Preorder Request</button></center>
+        </form>
+    </div>
+</section>
+
+<section id="contact">
+    <center><h2 class="section-title">Get In Touch</h2></center>
+    <div class="contact-grid">
+        <div class="contact-box">
+            <h3>Our Showroom</h3>
+            <p>Visit us for a physical inspection and test drive.</p>
+            <p><strong>📍 Address:</strong><br>
+            Beside Boywood Estate Agodi Gardens, Parliament Road, Agodi GRA, Ibadan.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Direct Lines</h3>
+            <p>Call or Message us today:</p>
+            <a href="tel:+2349039842681" class="contact-link">📞 +234 903 984 2681</a>
+            <a href="tel:+2349090554583" class="contact-link">📞 +234 909 055 4583</a>
+            <a href="#" class="contact-link">📸 Instagram: @lumar_autos</a>
+        </div>
+    </div>
+</section>
+
+<div id="chat-widget">
+    <div id="chat-box">
+        <div class="chat-header">
+            Lumar Autos | Live Concierge
+            <span onclick="toggleChat()" style="cursor:pointer; font-size: 1.2rem;">×</span>
+        </div>
+        <div id="chat-messages">
+            <p><strong>Lumar Bot:</strong> Welcome to Lumar Autos Limited! 🥂 We specialize in Premium Tokunbo cars with Clean Papers. How can we help you celebrate a new ride today? 🔑</p>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chat-input-field" placeholder="Ask about a car...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div id="chat-button" onclick="toggleChat()">💬</div>
+</div>
+
+<footer>
+    &copy; 2026 LUMAR AUTOS LIMITED. All Rights Reserved. <br>
+    IBADAN, NIGERIA.
+</footer>
+
+<script>
+    function toggleChat() {
+        const box = document.getElementById('chat-box');
+        box.style.display = box.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function openChat(msg) {
+        const box = document.getElementById('chat-box');
+        box.style.display = 'flex';
+        const input = document.getElementById('chat-input-field');
+        input.value = msg;
+        input.focus();
+    }
+
+    function sendMessage() {
+        const input = document.getElementById('chat-input-field');
+        const messages = document.getElementById('chat-messages');
+        if (input.value.trim() !== "") {
+            messages.innerHTML += `<div style="text-align:right; margin:10px 0;"><span style="background:var(--primary-red); color:white; padding:8px 12px; border-radius:10px; display:inline-block;">${input.value}</span></div>`;
+            
+            // Dealer Response
+            setTimeout(() => {
+                messages.innerHTML += `<p><strong>Dealer:</strong> That's a great choice! Our team in Ibadan is currently reviewing your message. Would you like to schedule an inspection for this vehicle tomorrow?</p>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+            
+            input.value = "";
+            messages.scrollTop = messages.scrollHeight;
+        }
+    }
+
+    function submitPreorder() {
+        alert("Your Preorder Request has been logged! A Lumar Autos representative will reach out via phone/WhatsApp to confirm the best deals for your budget.");
+        document.getElementById('preorderForm').reset();
+    }
+</script>
+
+</body>
+</html>
