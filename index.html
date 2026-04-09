@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumar Autos Limited | Verified Distress Units</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E31E24; 
+            --bg-dark: #0a0a0a;
+            --text-light: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --accent-gray: #333;
+            --gold: #D4AF37;
+        }
+
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg-dark); color: var(--text-light); margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        header { 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: #000; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-gray); 
+        }
+        
+        .logo-container img { height: 65px; width: auto; display: block; }
+
+        .distress-banner {
+            background: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        section { padding: 50px 5%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-size: 1.8rem; border-bottom: 3px solid var(--primary-red); display: inline-block; padding-bottom: 10px; }
+        
+        /* Inventory Grid */
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .car-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid #222; position: relative; }
+        
+        .image-box { position: relative; cursor: pointer; overflow: hidden; height: 220px; background: #000; }
+        .car-img { width: 100%; height: 100%; object-fit: cover; transition: 0.4s; }
+        .image-box:hover .car-img { transform: scale(1.05); opacity: 0.8; }
+        .view-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: var(--primary-red); color: white; padding: 4px 12px; font-size: 0.65rem; border-radius: 4px; font-weight: bold; white-space: nowrap; }
+
+        .car-info { padding: 20px; }
+        .car-info h3 { font-family: 'Montserrat'; margin: 0 0 8px 0; font-size: 1.1rem; color: #fff; }
+        .car-price { color: var(--gold); font-weight: bold; margin-bottom: 15px; font-size: 0.95rem; }
+        
+        .cta-btn { 
+            background: var(--primary-red); 
+            color: white; 
+            padding: 12px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            border: none; 
+            cursor: pointer; 
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        /* MODAL */
+        #gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-main-img { max-width: 90%; max-height: 65vh; border: 1px solid #333; border-radius: 8px; }
+        .close-btn { position: absolute; top: 20px; right: 25px; color: white; font-size: 35px; cursor: pointer; }
+        .thumb-nav { display: flex; gap: 10px; margin-top: 20px; }
+        .thumb-img { width: 60px; height: 45px; object-fit: cover; border-radius: 4px; cursor: pointer; border: 2px solid transparent; opacity: 0.5; }
+        .thumb-img.active { border-color: var(--primary-red); opacity: 1; }
+        .modal-label { color: var(--gold); font-family: 'Montserrat'; font-weight: bold; margin-bottom: 15px; }
+
+        footer { text-align: center; padding: 30px; color: #555; font-size: 0.75rem; border-top: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+<div class="distress-banner">🚨 DISTRESS SALES: AGODI GRA, IBADAN • CLEAN PAPERS • TOKUNBO 🚨</div>
+
+<header>
+    <div class="logo-container"><img src="lumar.jpeg" alt="Lumar Autos"></div>
+</header>
+
+<section id="inventory">
+    <center><h2 class="section-title">Verified Inventory</h2></center>
+    <div class="car-grid">
+        
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('glc300')">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=800" class="car-img">
+                <div class="view-hint">TAP TO SEE INTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2016 Mercedes-Benz GLC300</h3>
+                <div class="car-price">Distress Sale Price</div>
+                <button onclick="whatsapp('Mercedes GLC300')" class="cta-btn">DM ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('rx350')">
+                <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?q=80&w=800" class="car-img">
+                <div class="view-hint">TAP TO SEE INTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2017 Lexus RX350 (Basic)</h3>
+                <div class="car-price">Priced to Clear</div>
+                <button onclick="whatsapp('Lexus RX350')" class="cta-btn">DM ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('nx200t')">
+                <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=800" class="car-img">
+                <div class="view-hint">TAP TO SEE INTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2015 Lexus NX200t F Sport</h3>
+                <div class="car-price">Best Deal in Ibadan</div>
+                <button onclick="whatsapp('Lexus NX200t')" class="cta-btn">DM ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('venza')">
+                <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=800" class="car-img">
+                <div class="view-hint">TAP TO SEE INTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2009/2010 Toyota Venza</h3>
+                <div class="car-price">Tokunbo • Clearance</div>
+                <button onclick="whatsapp('Toyota Venza')" class="cta-btn">DM ON WHATSAPP</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="gallery-modal">
+    <span class="close-btn" onclick="closeGallery()">&times;</span>
+    <div class="modal-label" id="m-title">INTERIOR VIEW</div>
+    <img src="" id="m-img" class="modal-main-img">
+    <div class="thumb-nav" id="m-thumbs"></div>
+</div>
+
+<footer>
+    📍 Beside Boywood Estate, Agodi GRA, Ibadan<br>
+    &copy; 2026 LUMAR AUTOS LIMITED.
+</footer>
+
+<script>
+    const inventory = {
+        'glc300': {
+            name: "Mercedes-Benz GLC Interior",
+            imgs: [
+                "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?q=80&w=1200", // TRUE MERCEDES DASH
+                "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1200"  // EXTERIOR
+            ]
+        },
+        'rx350': {
+            name: "Lexus RX350 Interior",
+            imgs: [
+                "https://images.unsplash.com/photo-1616422285623-13ff0167295c?q=80&w=1200", // TRUE LEXUS INTERIOR
+                "https://images.unsplash.com/photo-1590362891991-f776e747a588?q=80&w=1200"  // EXTERIOR
+            ]
+        },
+        'nx200t': {
+            name: "Lexus NX Interior",
+            imgs: [
+                "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?q=80&w=1200", // TRUE LEXUS DASH
+                "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1200"  // EXTERIOR
+            ]
+        },
+        'venza': {
+            name: "Toyota Venza Interior",
+            imgs: [
+                "https://images.unsplash.com/photo-1550355291-bbee04a92027?q=80&w=1200", // TOYOTA DASH
+                "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?q=80&w=1200"  // EXTERIOR
+            ]
+        }
+    };
+
+    function openGallery(id) {
+        const car = inventory[id];
+        const modal = document.getElementById('gallery-modal');
+        const mImg = document.getElementById('m-img');
+        const mTitle = document.getElementById('m-title');
+        const mThumbs = document.getElementById('m-thumbs');
+
+        mTitle.innerText = car.name;
+        mImg.src = car.imgs[0]; // Set first image to Interior
+        mThumbs.innerHTML = '';
+
+        car.imgs.forEach((src, index) => {
+            const t = document.createElement('img');
+            t.src = src;
+            t.className = 'thumb-img' + (index === 0 ? ' active' : '');
+            t.onclick = () => {
+                mImg.src = src;
+                document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+                t.classList.add('active');
+            };
+            mThumbs.appendChild(t);
+        });
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+        document.getElementById('gallery-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function whatsapp(car) {
+        window.open(`https://wa.me/2349039842681?text=Inquiry for ${car} distress unit`, '_blank');
+    }
+</script>
+
+</body>
+</html>
