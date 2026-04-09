@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumar Autos Limited | Distress Sales Alert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E31E24; 
+            --bg-dark: #0a0a0a;
+            --text-light: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --accent-gray: #333;
+            --gold: #D4AF37;
+        }
+
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg-dark); color: var(--text-light); margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        header { 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(0,0,0,0.98); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-gray); 
+        }
+        
+        .logo-container img { height: 70px; width: auto; display: block; }
+
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--primary-red); }
+
+        /* DISTRESS ALERT BANNER */
+        .distress-banner {
+            background: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero { 
+            height: 50vh; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=2070') center/cover; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 10px; }
+        .hero p { color: var(--gold); font-weight: bold; letter-spacing: 3px; font-size: 1rem; text-transform: uppercase; }
+
+        section { padding: 60px 5%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-size: 2rem; border-bottom: 3px solid var(--primary-red); display: inline-block; padding-bottom: 10px; }
+        
+        .cta-btn { 
+            background: var(--primary-red); 
+            color: white; 
+            padding: 14px 35px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            transition: 0.3s; 
+            border: none; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+        .cta-btn:hover { background: #fff; color: #000; transform: translateY(-3px); }
+
+        /* Inventory */
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .car-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; position: relative; }
+        .car-img { width: 100%; height: 230px; object-fit: cover; }
+        .car-info { padding: 25px; }
+        .car-info h3 { font-family: 'Montserrat'; margin: 0 0 10px 0; font-size: 1.2rem; }
+        .car-price { color: var(--gold); font-weight: bold; margin: 15px 0; font-size: 1.1rem; }
+        .badge { position: absolute; top: 15px; left: 15px; background: var(--primary-red); color: white; padding: 5px 12px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; }
+
+        /* Contact Details */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-box { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #222; }
+
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+<div class="distress-banner">🚨 DISTRESS SALES ALERT - LIMITED TIME DEALS! 🚨</div>
+
+<header>
+    <div class="logo-container"><img src="lumar.jpeg" alt="Lumar Autos Logo"></div>
+    <nav>
+        <a href="#inventory">Inventory</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>RELIABLE | TRUSTED | VERIFIED</h1>
+    <p>Premium & Affordable Cars With Clean Papers</p>
+</section>
+
+<section id="inventory">
+    <center><h2 class="section-title">Available Units (Distress Sale)</h2></center>
+    <div class="car-grid">
+        
+        <div class="car-card">
+            <div class="badge">PRICED TO CLEAR</div>
+            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Mercedes GLC300">
+            <div class="car-info">
+                <h3>2016 Mercedes-Benz GLC300</h3>
+                <p>Ready for Inspection | Nationwide Delivery</p>
+                <p class="car-price">Price: Distress Sale Alert!</p>
+                <button onclick="openWhatsApp('Inquiry: 2016 Mercedes-Benz GLC300 - Distress Sale Deal')" class="cta-btn">SECURE NOW</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="badge">HOT DEAL</div>
+            <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Lexus RX350">
+            <div class="car-info">
+                <h3>2017 Lexus RX350 (Basic)</h3>
+                <p>Clean Ride | Direct Tokunbo</p>
+                <p class="car-price">Price: First Come, First Served</p>
+                <button onclick="openWhatsApp('Inquiry: 2017 Lexus RX350 (Basic) - Distress Sale Deal')" class="cta-btn">SECURE NOW</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="badge">F-SPORT EDITION</div>
+            <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Lexus NX200t">
+            <div class="car-info">
+                <h3>2015 Lexus NX200t F Sport</h3>
+                <p>Top Condition | Premium Luxury</p>
+                <p class="car-price">Price: Best Deal in Ibadan</p>
+                <button onclick="openWhatsApp('Inquiry: 2015 Lexus NX200t F Sport - Distress Sale Deal')" class="cta-btn">SECURE NOW</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="badge">MUST GO ASAP</div>
+            <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Toyota Venza">
+            <div class="car-info">
+                <h3>2009/2010 Toyota Venza</h3>
+                <p>Multiple Units Available | Ready for inspection</p>
+                <p class="car-price">Price: Clearance Sale</p>
+                <button onclick="openWhatsApp('Inquiry: Toyota Venza Distress Sale Deal')" class="cta-btn">SECURE NOW</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" style="background:#111;">
+    <center><h2 class="section-title">Showroom Location</h2></center>
+    <div class="contact-grid">
+        <div class="contact-box">
+            <h3>Ibadan Showroom</h3>
+            <p>📍 Beside Boywood Estate Agodi Gardens, Parliament Road, Agodi GRA, Ibadan.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Call/DM Now</h3>
+            <p>📞 +234 903 984 2681</p>
+            <p>📞 09090554583</p>
+        </div>
+    </div>
+</section>
+
+<footer>&copy; 2026 LUMAR AUTOS LIMITED. Your Dream Car, Our Priority.</footer>
+
+<script>
+    function openWhatsApp(msg) {
+        const myNumber = "2349039842681"; 
+        window.open(`https://wa.me/${myNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
