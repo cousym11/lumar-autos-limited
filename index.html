@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumar Autos Limited | Distress Sales Alert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #E31E24; 
+            --bg-dark: #0a0a0a;
+            --text-light: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --accent-gray: #333;
+            --gold: #D4AF37;
+        }
+
+        body { font-family: 'Open Sans', sans-serif; background: var(--bg-dark); color: var(--text-light); margin: 0; padding: 0; scroll-behavior: smooth; }
+        
+        header { 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(0,0,0,0.98); 
+            position: sticky; 
+            top: 0; 
+            z-index: 100; 
+            border-bottom: 2px solid var(--accent-gray); 
+        }
+        
+        .logo-container img { height: 70px; width: auto; display: block; }
+
+        .distress-banner {
+            background: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-family: 'Montserrat';
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        section { padding: 60px 5%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat', sans-serif; font-size: 2rem; border-bottom: 3px solid var(--primary-red); display: inline-block; padding-bottom: 10px; }
+        
+        /* Inventory Grid */
+        .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .car-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; position: relative; transition: 0.3s; }
+        
+        .image-box { position: relative; cursor: pointer; overflow: hidden; height: 230px; }
+        .car-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .image-box:hover .car-img { transform: scale(1.05); }
+        .view-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: var(--gold); padding: 5px 15px; font-size: 0.7rem; border-radius: 20px; font-weight: bold; white-space: nowrap; border: 1px solid var(--gold); }
+
+        .car-info { padding: 25px; }
+        .car-info h3 { font-family: 'Montserrat'; margin: 0 0 10px 0; font-size: 1.1rem; }
+        .car-price { color: var(--gold); font-weight: bold; margin: 15px 0; font-size: 1rem; }
+        
+        .cta-btn { 
+            background: var(--primary-red); 
+            color: white; 
+            padding: 12px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            border: none; 
+            cursor: pointer; 
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        /* LIGHTBOX MODAL */
+        #gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-main-img { max-width: 100%; max-height: 70vh; border-radius: 10px; border: 1px solid #444; }
+        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .thumb-nav { display: flex; gap: 10px; margin-top: 20px; overflow-x: auto; padding: 10px; max-width: 100%; }
+        .thumb-img { width: 70px; height: 50px; object-fit: cover; border-radius: 5px; cursor: pointer; border: 2px solid transparent; opacity: 0.6; }
+        .thumb-img.active { border-color: var(--primary-red); opacity: 1; }
+        .modal-title { color: var(--gold); font-family: 'Montserrat'; font-weight: bold; margin-bottom: 10px; font-size: 1.2rem; text-align: center;}
+
+        /* Contact Details */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-box { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid #222; }
+
+        footer { text-align: center; padding: 40px; color: #666; font-size: 0.8rem; border-top: 1px solid #222; }
+    </style>
+</head>
+<body>
+
+<div class="distress-banner">🚨 DISTRESS SALES ALERT: First Come, First Served 🚨</div>
+
+<header>
+    <div class="logo-container"><img src="lumar.jpeg" alt="Lumar Autos Logo"></div>
+</header>
+
+<section id="inventory">
+    <center><h2 class="section-title">Verified Distress Units</h2></center>
+    <div class="car-grid">
+        
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('glc300')">
+                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Exterior Mercedes GLC300">
+                <div class="view-hint">VIEW INTERIOR & EXTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2016 Mercedes-Benz GLC300</h3>
+                <p>Tokunbo | Clean Papers | Ready for Inspection</p>
+                <p class="car-price">Price: Distress Sale Deal</p>
+                <button onclick="whatsappInquiry('2016 Mercedes-Benz GLC300')" class="cta-btn">INQUIRE ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('rx350')">
+                <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Exterior Lexus RX350">
+                <div class="view-hint">VIEW INTERIOR & EXTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2017 Lexus RX350 (Basic)</h3>
+                <p>Priced to Clear | Super Clean | Direct Tokunbo</p>
+                <p class="car-price">Price: Clearance Sale</p>
+                <button onclick="whatsappInquiry('2017 Lexus RX350 (Basic)')" class="cta-btn">INQUIRE ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('nx200t')">
+                <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Exterior Lexus NX200t">
+                <div class="view-hint">VIEW INTERIOR & EXTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2015 Lexus NX200t F Sport</h3>
+                <p>Serious Buyers Only | Negotiable Distress Deal</p>
+                <p class="car-price">Price: Hot Deal</p>
+                <button onclick="whatsappInquiry('2015 Lexus NX200t F Sport')" class="cta-btn">INQUIRE ON WHATSAPP</button>
+            </div>
+        </div>
+
+        <div class="car-card">
+            <div class="image-box" onclick="openGallery('venza')">
+                <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800" class="car-img" alt="Exterior Toyota Venza">
+                <div class="view-hint">VIEW INTERIOR & EXTERIOR</div>
+            </div>
+            <div class="car-info">
+                <h3>2009/2010 Toyota Venza</h3>
+                <p>Multiple Units | Priced to Go ASAP</p>
+                <p class="car-price">Price: Distress Clearance</p>
+                <button onclick="whatsappInquiry('Toyota Venza 2009/2010')" class="cta-btn">INQUIRE ON WHATSAPP</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="gallery-modal">
+    <span class="close-btn" onclick="closeGallery()">&times;</span>
+    <div class="modal-title" id="m-title"></div>
+    <img src="" id="m-img" class="modal-main-img">
+    <div class="thumb-nav" id="m-thumbs"></div>
+</div>
+
+<section id="contact" style="background:#111;">
+    <center><h2 class="section-title">Our Showroom</h2></center>
+    <div class="contact-grid">
+        <div class="contact-box">
+            <h3>Ibadan Location</h3>
+            <p>📍 Beside Boywood Estate Agodi Gardens, Parliament Road, Agodi GRA, Ibadan.</p>
+        </div>
+        <div class="contact-box">
+            <h3>Direct Lines</h3>
+            <p>📞 +234 903 984 2681</p>
+            <p>📞 09090554583</p>
+        </div>
+    </div>
+</section>
+
+<footer>&copy; 2026 LUMAR AUTOS LIMITED. Your Dream Car, Our Priority.</footer>
+
+<script>
+    // ACCURATE IMAGE MAPPING - INTERIOR IS FIRST
+    const carData = {
+        'glc300': {
+            name: "2016 Mercedes-Benz GLC300",
+            gallery: [
+                "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=1200", // INTERIOR: Mercedes Dashboard
+                "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=1200", // EXTERIOR: Front
+                "https://images.unsplash.com/photo-1606148632349-564e8c8ada42?auto=format&fit=crop&q=80&w=1200"  // INTERIOR: Leather Seats
+            ]
+        },
+        'rx350': {
+            name: "2017 Lexus RX350 (Basic)",
+            gallery: [
+                "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&q=80&w=1200", // INTERIOR: Lexus Dashboard
+                "https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&q=80&w=1200", // EXTERIOR: Front
+                "https://images.unsplash.com/photo-1621360341397-0331664e7314?auto=format&fit=crop&q=80&w=1200"  // EXTERIOR: Rear
+            ]
+        },
+        'nx200t': {
+            name: "2015 Lexus NX200t F Sport",
+            gallery: [
+                "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80&w=1200", // INTERIOR: Lexus Cockpit
+                "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&q=80&w=1200", // EXTERIOR: Red Front
+                "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=1200"  // INTERIOR: F-Sport Trim
+            ]
+        },
+        'venza': {
+            name: "2009/2010 Toyota Venza",
+            gallery: [
+                "https://images.unsplash.com/photo-1550355291-bbee04a92027?auto=format&fit=crop&q=80&w=1200", // INTERIOR: Venza Dash
+                "https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=1200", // EXTERIOR: Front
+                "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&q=80&w=1200"  // EXTERIOR: Rear Angle
+            ]
+        }
+    };
+
+    function openGallery(id) {
+        const car = carData[id];
+        const modal = document.getElementById('gallery-modal');
+        const mImg = document.getElementById('m-img');
+        const mTitle = document.getElementById('m-title');
+        const mThumbs = document.getElementById('m-thumbs');
+
+        mTitle.innerText = car.name;
+        mImg.src = car.gallery[0]; // Shows Interior first
+        mThumbs.innerHTML = '';
+
+        car.gallery.forEach((url, index) => {
+            const t = document.createElement('img');
+            t.src = url;
+            t.className = 'thumb-img' + (index === 0 ? ' active' : '');
+            t.onclick = function() {
+                mImg.src = url;
+                document.querySelectorAll('.thumb-img').forEach(el => el.classList.remove('active'));
+                t.classList.add('active');
+            };
+            mThumbs.appendChild(t);
+        });
+
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+        document.getElementById('gallery-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function whatsappInquiry(carName) {
+        const num = "2349039842681";
+        const msg = encodeURIComponent(`Hello Lumar Autos, I am interested in the ${carName} distress sale unit. Is it still available for inspection?`);
+        window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
